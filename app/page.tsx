@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation"
 import { Carattere } from "next/font/google"
 
+import { redirect } from "next/navigation"
+
 // Typographie Google Fonts
 const carattere = Carattere({
   subsets: ['latin'],
