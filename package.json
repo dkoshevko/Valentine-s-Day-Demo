@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "exif": "^0.6.0",
     "exifreader": "^4.20.0",
+    "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "leaflet": "^1.9.4",
     "lottie-react": "^2.4.0",
+    "moment": "^2.30.1",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

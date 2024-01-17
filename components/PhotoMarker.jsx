@@ -15,18 +15,18 @@ export default function PhotoMarker({ position, url, index, date }) {
         iconSize: [60, 60], // ajustez la taille de l'icône selon vos besoins
         iconAnchor: [30, 60], // point d'ancrage de l'icône
         popupAnchor: [0, -40], // point d'ancrage du popup
-        className: "rounded-full border border-red-500"
+        className: "rounded-full border border-red-500 object-cover"
     })
 
 
 
     return (
-        <Marker position={position} icon={customIcon}>
+        <Marker position={position} icon={customIcon} >
             <Popup minWidth={300} closeButton={false} >
-                <Image src={url} alt="" width={301} height={300} className='rounded-xl' />
+                <Image src={url} alt="" width={301} height={300} className='rounded-t-lg' />
                 <div className={carattere.className}>
                     <div className='flex justify-center py-1 text-xl'>
-                        ❤️{date}✨
+                        {date}
                     </div>
                 </div>
             </Popup>
