@@ -12,7 +12,7 @@ export default function MapComponent({ photos }) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {Array.isArray(photos) && photos.map((photo, index) => (
-                <PhotoMarker key={index} position={[photo.lat, photo.lng]} url={photo.url} index={index} date={photo.date} />
+                <PhotoMarker key={index} position={[photo.lat, photo.lng]} url={photo.src} index={index} date={photo.date} />
             ))}
         </MapContainer>
     );

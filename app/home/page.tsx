@@ -37,7 +37,7 @@ export default function App() {
       {/* Afficher le Loader si showLoader est vrai */}
       {showHome && (
         <div
-          className="min-h-screen bg-cover text-slate-900"
+          className="min-h-screen bg-cover text-slate-900 flex flex-col items-center"
           style={{ backgroundImage: `url('/bg-hearts.jpg')` }}
         >
           <div className="w-full mb-5" style={{ height: "70vh" }}>
