@@ -1,22 +1,20 @@
-"use client";
+"use client"
 
-import { useRouter } from "next/navigation"
-import { Carattere } from "next/font/google"
-
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation";
+import { Carattere } from "next/font/google";
 
 // Typographie Google Fonts
 const carattere = Carattere({
-  subsets: ['latin'],
+  subsets: ["latin"],
   weight: "400"
-})
+});
 
 
 export default function Login() {
-  const router = useRouter()
+  const router = useRouter();
 
   // Réponse attendue
-  const userResponse: string = "4"
+  const userResponse: string = "4";
 
   // Vérification de la réponse
   const verifyToken = () => {
@@ -26,21 +24,21 @@ export default function Login() {
     const responseValue: string = response.value;
 
     if (responseValue === userResponse) {
-      localStorage.setItem("user", "verified")
-      router.push("/home")
-    }
-  }
+      localStorage.setItem("user", "verified");
+      router.push("/home");
+    };
+  };
 
   return (
     <main>
       <div 
         className="flex items-center justify-center min-h-screen p-4 bg-cover text-slate-900" 
-        style={{backgroundImage: `url('/bg-hearts.jpg')`}}
+        style={{backgroundImage: `url("/bg-hearts.jpg")`}}
       >
         <div className="bg-purple-50 px-4 py-8 rounded-xl shadow-md">
           {/* div pour la typo */}
           <div className={carattere.className}>
-            <h1 className="text-center text-3xl font-medium mb-5">Bonjour Marie</h1>
+            <h1 className="text-center text-3xl mb-5">Bonjour Marie</h1>
           </div>
           {/* Fin div pour la typo */}
           <h2 className="text-center">
@@ -58,7 +56,7 @@ export default function Login() {
               className="bg-rose-50 border border-rose-100 w-full h-10 rounded mb-4" 
             />
             <p className="mb-3 text-xs">
-              Oh-là-là est-ce que j&apos;ai deviné..? 😰
+              Oh-là-là est-ce que j’ai deviné..? 😰
             </p>
             <button type="submit" className="bg-red-500 px-8 py-2 rounded text-white font-semibold active:scale-110">
               Voir la suite 👀
