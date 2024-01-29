@@ -26,7 +26,7 @@ export default function Icons() {
                 <IconLottie animation={Christmas} text={"Des fêtes"} customStyle={{}} />
                 <IconLottie animation={Roadtrip} text={"Beaucoup de km parcourus"} customStyle={{}} />
             </div>
-            <div className="text-center text-2xl font-medium">
+            <div className="flex justify-center text-2xl font-medium">
                 <TextReveal text="Et tant d'autres..." />
             </div>
         </div>

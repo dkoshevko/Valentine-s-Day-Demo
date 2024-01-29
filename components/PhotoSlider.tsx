@@ -1,10 +1,8 @@
-import Carousel from 'react-gallery-carousel';
-import 'react-gallery-carousel/dist/index.css';
-
-import photosArray from "../app/home/photosArray";
+import Carousel from "react-gallery-carousel";
+import "react-gallery-carousel/dist/index.css";
 
 
-export default function PhotoSlider() {
+export default function PhotoSlider({ photos }) {
 
     const determineStyles = () => {
         const screenWidth = window.innerWidth;
@@ -25,10 +23,12 @@ export default function PhotoSlider() {
     const carouselStyles = determineStyles();
 
     return (
-        <div>
-            <h3>Nous avons un petit album photo.</h3>
+        <div className="flex flex-col justify-center items-center mb-20">
+            <h2 className="text-xl font-medium text-justify leading-none px-2 mb-5">
+                Même si on ne pense pas souvent à prendre des photos tellement nous sommes concentrés l’un sur l’autre et qu’on profite du moment présent, nous avons quand même réussi à en collecter quelques-unes.
+            </h2>
             <Carousel 
-                images={photosArray} 
+                images={photos} 
                 style={carouselStyles}
                 objectFit="contain" 
                 className="rounded-md overflow-hidden"
@@ -50,16 +50,16 @@ export default function PhotoSlider() {
                     <i className="fa-solid fa-chevron-right text-white text-4xl mr-2"></i>
                 } 
                 maxIcon={
-                    <i className="fa-solid fa-expand text-white text-xl mr-1"></i>
+                    <i className="fa-solid fa-expand text-white text-xl mr-2"></i>
                 } 
                 minIcon={
-                    <i className="fa-solid fa-compress text-white text-xl mr-1"></i>
+                    <i className="fa-solid fa-compress text-white text-xl mr-2"></i>
                 } 
                 pauseIcon={
-                    <i className="fa-solid fa-pause text-white text-3xl ml-1"></i>
+                    <i className="fa-solid fa-pause text-white text-3xl ml-2"></i>
                 } 
                 playIcon={
-                    <i className="fa-solid fa-play text-white text-3xl ml-1"></i>
+                    <i className="fa-solid fa-play text-white text-3xl ml-2"></i>
                 }
             />
         </div>

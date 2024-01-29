@@ -6,11 +6,11 @@ export default function PhotoMap({ photos }) {
 
 
     return (
-        <div className="w-full">
-            <h2 className="text-xl font-medium mb-3">
+        <div className="w-full mb-20">
+            <h2 className="text-xl font-medium text-justify px-2 mb-5">
                 Nous avons voyagé
             </h2>
-            <div className="w-full mb-5" style={{ height: "70vh" }}>
+            <div className="w-full" style={{ height: "70vh" }}>
                 <MapContainer center={position} zoom={5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} >
                     <TileLayer
                         detectRetina={true}

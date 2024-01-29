@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 
-import Loader from "../../components/Loader";
+import Loader from "@/components/Loader";
 
 import Introduction from "@/components/Introduction";
 import StaticMap from "@/components/StaticMap";
@@ -12,6 +12,7 @@ import PhotoMap from "@/components/PhotoMap";
 import PhotoSlider from "@/components/PhotoSlider";
 
 import photosArray from "./photosArray";
+import DownloadButton from "@/components/DownloadButton";
 
 
 export default function App() {
@@ -50,8 +51,8 @@ export default function App() {
           <StaticMap />
           <Icons />
           <PhotoMap photos={photosArray} />
-          <PhotoSlider />
-
+          <PhotoSlider photos={photosArray} />
+          <DownloadButton />
           
           <h3>Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi.</h3>
           <h3>Merci de me rendre heureux.</h3>

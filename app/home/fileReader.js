@@ -96,7 +96,7 @@ const processFiles = async () => {
               newData.push({
                 lat,
                 lng,
-                url: `/photos/${file}`,
+                src: `/photos/${file}`,
                 date: formattedDate,
               });
             } else {

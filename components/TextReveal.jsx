@@ -34,8 +34,8 @@ export default function TextReveal({ text }) {
 
 
     return (
-        <span className="">
-            <span className="text-reveal">{text}</span>
+        <span className="w-fit">
+            <h3 className="text-reveal">{text}</h3>
         </span>
     )
 }

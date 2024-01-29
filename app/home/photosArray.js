@@ -269,6 +269,12 @@ let photosArray = [
     src: "/photos/IMG_9051.JPG",
     date: "02.12.2023",
   },
+  {
+    lat: 48.85171944444445,
+    lng: 2.350427777777778,
+    src: "/photos/IMG_9252.JPG",
+    date: "26.01.2024",
+  },
 ];
 
 module.exports = photosArray;
