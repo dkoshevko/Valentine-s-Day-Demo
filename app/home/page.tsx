@@ -14,7 +14,7 @@ import PhotoSlider from "@/components/PhotoSlider";
 import DownloadButton from "@/components/DownloadButton";
 import Quote from "@/components/Quote";
 
-import photosArray from "./photosArray";
+import photosArray from "../../data/photosArray";
 
 
 export default function App() {
