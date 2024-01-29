@@ -26,11 +26,11 @@ export default function TextReveal({ text }) {
         );
     };
 
-    if (window.addEventListener) {
-        addEventListener("DOMContentLoaded", checkForVisibility, false);
-        addEventListener("load", checkForVisibility, false);
-        addEventListener("scroll", checkForVisibility, false);
-    };
+    if (window && window.addEventListener) {
+        window.addEventListener("DOMContentLoaded", checkForVisibility, false);
+        window.addEventListener("load", checkForVisibility, false);
+        window.addEventListener("scroll", checkForVisibility, false);
+    }
 
 
     return (
