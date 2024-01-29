@@ -39,17 +39,17 @@ export default function DownloadButton() {
 
 
     return (
-        <div className="w-full h-28 mb-16 flex justify-center items-center">
+        <div className="w-full h-28 mb-5 flex justify-center items-center">
             <div 
                 id="touch-me"
                 className="bg-red-500 py-4 px-8 rounded-full text-white shadow-xl cursor-pointer text-xl active:scale-90" 
                 onClick={handleClick}
             >
-                Touche-moi
+                Touche-moi 😋
             </div>
             <div id="progress-container" className="w-60 hidden flex flex-col justify-center items-center">
-                <div id="progress-bar" className="w-full h-7 bg-slate-100 rounded-xl flex items-center relative shadow-2xl shadow-red-500">
-                    <div id="progress-fill" className="absolute w-full h-full bg-red-500 rounded-xl bg-gradient-to-r from-pink-300 to-red-500"></div>
+                <div id="progress-bar" className="w-full h-7 bg-slate-100 flex items-center relative shadow-2xl shadow-red-500">
+                    <div id="progress-fill" className="absolute w-full h-full bg-red-500 bg-gradient-to-r from-pink-300 to-red-500"></div>
                     <div id="progress-text" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold"></div>
                 </div>
             </div>

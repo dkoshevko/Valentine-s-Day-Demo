@@ -93,3 +93,16 @@ body {
   transform: scalex(0%);
   transition: all 90ms linear;
 }
+
+@keyframes separation {
+  from { width: 0 }
+  to { width: 100% }
+}
+.separator {
+  max-width: 93%;
+  height: 1px;
+  background: #000;
+}
+.separator-visible {
+  animation: separation 1s linear forwards;
+}

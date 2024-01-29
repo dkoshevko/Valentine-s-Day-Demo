@@ -4,15 +4,17 @@ import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 
 import Loader from "@/components/Loader";
+import Separator from "@/components/Separator";
 
 import Introduction from "@/components/Introduction";
 import StaticMap from "@/components/StaticMap";
 import Icons from "@/components/Icons";
 import PhotoMap from "@/components/PhotoMap";
 import PhotoSlider from "@/components/PhotoSlider";
+import DownloadButton from "@/components/DownloadButton";
+import Quote from "@/components/Quote";
 
 import photosArray from "./photosArray";
-import DownloadButton from "@/components/DownloadButton";
 
 
 export default function App() {
@@ -25,7 +27,7 @@ export default function App() {
     const loaderTimeoutId = setTimeout(() => {
       setShowLoader(false);
       setShowHome(true);
-    }, 2); // 2500 millisecondes équivalent à 3 secondes
+    }, 2500); // 2500 millisecondes équivalent à 2,5 secondes
 
     // Nettoyer le timeout lorsque le composant est démonté
     return () => {
@@ -44,21 +46,25 @@ export default function App() {
       {/* Afficher le Loader si showLoader est vrai */}
       {showHome && (
         <div
-          className="min-h-screen bg-cover text-slate-900 flex flex-col items-center relative"
-          style={{ backgroundImage: `url("/bg-hearts.jpg")` }}
+          className="min-h-screen bg-cover bg-fixed bg-top text-slate-900 flex flex-col items-center relative"
+          style={{ backgroundImage: `url("/bg-hearts.avif")` }}
         >
           <Introduction />
           <StaticMap />
           <Icons />
           <PhotoMap photos={photosArray} />
+          <Separator />
           <PhotoSlider photos={photosArray} />
           <DownloadButton />
-          
-          <h3>Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi.</h3>
-          <h3>Merci de me rendre heureux.</h3>
-          <div className="text-xs mt-10 static bottom-0">
-            Fait avec ❤️
+          <Quote text="Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi." />
+
+          <div className="flex flex-col items-center font-medium">
+            <h4>Merci de me rendre heureux</h4>
+            <h4>Je t’aime infiniment</h4>
+            <Separator />
+            <span className="text-xs static bottom-0">Fait avec ❤️</span>
           </div>
+
         </div>
       )}
     </main>

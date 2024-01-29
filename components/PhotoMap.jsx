@@ -6,7 +6,7 @@ export default function PhotoMap({ photos }) {
 
 
     return (
-        <div className="w-full mb-20">
+        <div className="w-full">
             <h2 className="text-xl font-medium text-justify px-2 mb-5">
                 Nous avons voyagé
             </h2>

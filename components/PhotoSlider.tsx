@@ -23,7 +23,7 @@ export default function PhotoSlider({ photos }) {
     const carouselStyles = determineStyles();
 
     return (
-        <div className="flex flex-col justify-center items-center mb-20">
+        <div className="flex flex-col justify-center items-center mb-5">
             <h2 className="text-xl font-medium text-justify leading-none px-2 mb-5">
                 Même si on ne pense pas souvent à prendre des photos tellement nous sommes concentrés l’un sur l’autre et qu’on profite du moment présent, nous avons quand même réussi à en collecter quelques-unes.
             </h2>
@@ -32,6 +32,7 @@ export default function PhotoSlider({ photos }) {
                 style={carouselStyles}
                 objectFit="contain" 
                 className="rounded-md overflow-hidden"
+                shouldLazyLoad={true} 
                 isAutoPlaying={true} 
                 hasThumbnails={false} 
                 hasIndexBoard={false} 

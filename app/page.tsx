@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { Carattere } from "next/font/google";
 
 // Typographie Google Fonts
@@ -14,17 +14,18 @@ export default function Login() {
   const router = useRouter();
 
   // Réponse attendue
-  const userResponse: string = "4";
+  const userResponse: string = "Paulette";
 
   // Vérification de la réponse
-  const verifyToken = () => {
+  const verifyToken = (e:any) => {
     const response = document.getElementById(
       "response-auth"
     ) as HTMLInputElement;
-    const responseValue: string = response.value;
+    const responseValue: string = response.value.toLocaleLowerCase();
 
-    if (responseValue === userResponse) {
+    if (responseValue === userResponse.toLowerCase()) {
       localStorage.setItem("user", "verified");
+      e.preventDefault();
       router.push("/home");
     };
   };
@@ -33,7 +34,7 @@ export default function Login() {
     <main>
       <div 
         className="flex items-center justify-center min-h-screen p-4 bg-cover text-slate-900" 
-        style={{backgroundImage: `url("/bg-hearts.jpg")`}}
+        style={{backgroundImage: `url("/bg-hearts.avif")`}}
       >
         <div className="bg-purple-50 px-4 py-8 rounded-xl shadow-md">
           {/* div pour la typo */}
@@ -46,7 +47,7 @@ export default function Login() {
           </h2>
           {/* Question */}
           <h3 className="text-center rounded py-5 text-red-500 font-medium">
-            Combien fait 2+2 ?
+          Comment s’appelle l’endroit où nous avons partagé notre tout premier verre en tête-à-tête ?
           </h3>
           {/* Fin Question */}
           <form action="" onSubmit={verifyToken} className="flex flex-col items-center">

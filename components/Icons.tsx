@@ -13,7 +13,7 @@ import Rollercoaster from "../public/lottie/rollercoaster-lottie.json";
 export default function Icons() {
 
     return(
-        <div className="mb-20">
+        <div className="mb-14">
             <h2 className="text-xl font-medium text-justify px-2 mb-5">
                 Depuis, nous avons vécu beaucoup de choses :
             </h2>
