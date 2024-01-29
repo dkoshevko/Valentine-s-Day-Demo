@@ -4,7 +4,7 @@ import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
 
 
-export default function PhotoSlider({ photos }) {
+export default function PhotoSlider({ photos }:any) {
 
     const determineStyles = () => {
         const screenWidth = window.innerWidth;

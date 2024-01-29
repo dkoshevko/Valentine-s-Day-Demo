@@ -13,7 +13,7 @@ export default function Separator() {
         });
     };
 
-    function isElementInViewport(el) {
+    function isElementInViewport(el:any) {
         let rect = el.getBoundingClientRect();
 
         return (
@@ -25,11 +25,12 @@ export default function Separator() {
         );
     };
 
-    if (window.addEventListener) {
-        addEventListener("DOMContentLoaded", checkForVisibility, false);
-        addEventListener("load", checkForVisibility, false);
-        addEventListener("scroll", checkForVisibility, false);
-    };
+    if (window && window.addEventListener) {
+        window.addEventListener("DOMContentLoaded", checkForVisibility, false);
+        window.addEventListener("load", checkForVisibility, false);
+        window.addEventListener("scroll", checkForVisibility, false);
+    }
+
 
     return (
         <div className="separator my-10"></div>
