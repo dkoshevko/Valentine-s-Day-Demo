@@ -1,20 +1,24 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { redirect } from "next/navigation";
+import dynamic from "next/dynamic";
 
 import Loader from "@/components/Loader";
 import Separator from "@/components/Separator";
 
 import Introduction from "@/components/Introduction";
-import StaticMap from "@/components/StaticMap";
+// import StaticMap from "@/components/StaticMap";
 import Icons from "@/components/Icons";
-import PhotoMap from "@/components/PhotoMap";
+// import PhotoMap from "@/components/PhotoMap";
 import PhotoSlider from "@/components/PhotoSlider";
 import DownloadButton from "@/components/DownloadButton";
 import Quote from "@/components/Quote";
 
 import photosArray from "../../data/photosArray";
+
+const StaticMap = dynamic( () => import("@/components/StaticMap"), { ssr: false } );
+const PhotoMap = dynamic( () => import("@/components/PhotoMap"), { ssr: false } );
 
 
 export default function App() {
@@ -35,10 +39,12 @@ export default function App() {
     };
   }, []);
 
-  const isAuth = localStorage.getItem("user");
-  if (!isAuth) {
-    redirect("/");
-  };
+  useEffect(() => {
+    const isAuth = window.localStorage.getItem("user");
+    if (!isAuth) {
+      redirect("/");
+    };
+  })
 
   return (
     <main>

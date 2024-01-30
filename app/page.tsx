@@ -24,9 +24,11 @@ export default function Login() {
     const responseValue: string = response.value.toLocaleLowerCase();
 
     if (responseValue === userResponse.toLowerCase()) {
-      localStorage.setItem("user", "verified");
-      e.preventDefault();
-      router.push("/home");
+      if (typeof window !== "undefined") {
+        localStorage.setItem("user", "verified");
+        e.preventDefault();
+        router.push("/home");
+      }
     };
   };
 
