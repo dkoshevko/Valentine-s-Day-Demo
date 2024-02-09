@@ -14,6 +14,7 @@ import Icons from "@/components/Icons";
 import PhotoSlider from "@/components/PhotoSlider";
 import DownloadButton from "@/components/DownloadButton";
 import Quote from "@/components/Quote";
+import VoiceMessage from "@/components/VoiceMessage";
 
 import photosArray from "../../data/photosArray";
 
@@ -31,7 +32,7 @@ export default function App() {
     const loaderTimeoutId = setTimeout(() => {
       setShowLoader(false);
       setShowHome(true);
-    }, 2500); // 2500 millisecondes équivalent à 2,5 secondes
+    }, 2); // 2500 millisecondes équivalent à 2,5 secondes
 
     // Nettoyer le timeout lorsque le composant est démonté
     return () => {
@@ -55,18 +56,20 @@ export default function App() {
           className="min-h-screen bg-cover bg-fixed bg-top text-slate-900 flex flex-col items-center relative"
           style={{ backgroundImage: `url("/bg-hearts.avif")` }}
         >
-          <Introduction />
+          {/* <Introduction />
           <StaticMap />
           <Icons />
           <PhotoMap photos={photosArray} />
           <Separator />
           <PhotoSlider photos={photosArray} />
-          <DownloadButton />
+          <DownloadButton /> */}
+          <VoiceMessage />
           <Quote text="Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi." />
 
           <div className="flex flex-col items-center font-medium">
+            <h4>Je considère avoir remporté la vie parce que je t’ai à mes côtés</h4>
             <h4>Merci de me rendre heureux</h4>
-            <h4>Je t’aime infiniment</h4>
+            <h4>Je me sens submergé d’amour pour toi ∞</h4>
             <Separator />
             <span className="text-xs static bottom-0">Fait avec ❤️</span>
           </div>

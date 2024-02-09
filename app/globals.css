@@ -18,28 +18,37 @@
 
 /* The floating effect */
 @keyframes float {
-	0% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
-	50% {
-		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-		transform: translatey(-20px);
-	}
-	100% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-20px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
 }
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: black }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
 }
 
 body {
@@ -67,7 +76,7 @@ body {
 
 .static-map {
   transform: translateY(0px);
-	animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
 .text-reveal {
@@ -78,14 +87,12 @@ body {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  border-right: .15em solid black; /* The typwriter cursor */
+  border-right: 0.15em solid black; /* The typwriter cursor */
 }
 .text-reveal-visible {
   opacity: 1;
   /* transform: translateY(0); */
-  animation: 
-    typing 3.5s steps(30, end), 
-    blink-caret .5s step-end infinite;
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
 }
 
 #progress-fill {
@@ -95,8 +102,12 @@ body {
 }
 
 @keyframes separation {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 .separator {
   max-width: 93%;
@@ -105,4 +116,81 @@ body {
 }
 .separator-visible {
   animation: separation 1s linear forwards;
+}
+
+#dialog-corner {
+  position: absolute;
+  bottom: 0;
+  left: -1rem;
+  width: 1rem;
+  height: 1rem;
+  background-image: radial-gradient(circle at 0 0, transparent 0%, transparent 1rem, #EF4444 1rem);
+}
+
+.play-wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+.play-wrapper__circle {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  transform: scale(1, 1);
+}
+.play-wrapper__circle-pulse.pulsing {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  animation-timing-function: ease;
+  animation: pulse 2s infinite;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.button-play {
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 10px;
+
+  border-color: transparent transparent transparent #EF4444;
+  transition: 100ms all ease;
+  cursor: pointer;
+
+  /* play state */
+  border-style: solid;
+  border-width: 10px 0 10px 15px;
+}
+.button-play.paused {
+  left: 50%;
+  height: 20px;
+  border-style: double;
+  border-width: 0px 0 0px 15px;
 }
