@@ -64,7 +64,7 @@ export default function App() {
           <PhotoSlider photos={photosArray} />
           <DownloadButton /> */}
           <VoiceMessage />
-          <Quote text="Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi." />
+          {/* <Quote text="Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi." />
 
           <div className="flex flex-col items-center font-medium">
             <h4>Je considère avoir remporté la vie parce que je t’ai à mes côtés</h4>
@@ -72,7 +72,7 @@ export default function App() {
             <h4>Je me sens submergé d’amour pour toi ∞</h4>
             <Separator />
             <span className="text-xs static bottom-0">Fait avec ❤️</span>
-          </div>
+          </div> */}
 
         </div>
       )}
