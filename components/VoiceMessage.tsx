@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import VoiceBars from "./VoiceBars";
 
 // Function to display current time !WITHOUT real time refresh
@@ -16,11 +16,6 @@ const getTime = () => {
   return actualTime;
 };
 
-  //-------------------------------------
-  // A VERIFIER AVEC LA MUSIQUE
-  //console.log("On load", isPlaying);
-  //-------------------------------------
-
 
 export default function VoiceMessage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -31,6 +26,7 @@ export default function VoiceMessage() {
     const buttonStill = document.querySelector(".button-play") as HTMLElement;
     const buttonPulsingShape = document.querySelector(".play-wrapper__circle-pulse") as HTMLElement;
     const bars = document.querySelectorAll(".bar");
+    const audio = document.getElementById("voice-message-for-you") as HTMLAudioElement;
 
     // Play/pause
     buttonStill.classList.toggle("paused");
@@ -63,9 +59,11 @@ export default function VoiceMessage() {
 
     // Toggle play and pause animation for voice bars
     if (!isPlaying) {
-      animateBars()
+      animateBars();
+      audio.play();
     } else {
-      pauseAnimation()
+      pauseAnimation();
+      audio.pause();
     }
   };
 
@@ -89,10 +87,7 @@ export default function VoiceMessage() {
           <div>{getTime()}</div>
         </div>
       </div>
+      <audio id="voice-message-for-you" src="/music1.mp3"></audio>
     </div>
   )
 }
-function stopColorChange() {
-  throw new Error("Function not implemented.");
-}
-
