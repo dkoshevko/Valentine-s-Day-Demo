@@ -61,6 +61,9 @@ export default function VoiceMessage() {
     // Set the State for isPlaying
     setIsPlaying(prevIsPlaying => !prevIsPlaying);
 
+    // Calculate animation duration from audio length
+    const barAnimationDuration = (audio.duration / 35) * 1000;
+
     // Animation for voice bars
     function animateBars() {
       bars.forEach((bar, index) => {
@@ -69,7 +72,7 @@ export default function VoiceMessage() {
           const timeoutId = setTimeout(() => {
             bar.classList.add("white-bars");
             bar.classList.remove("bar");
-          }, index * 1000); // Duration of the animation (1000ms per bar)
+          }, index * barAnimationDuration); // Duration of the animation (1000ms per bar)
           setTimeoutIds(prevIds => [...prevIds, timeoutId as unknown as number]); // Perform an explicit type conversion
         }
       });
