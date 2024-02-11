@@ -16,19 +16,45 @@ const getTime = () => {
   return actualTime;
 };
 
+const AUDIO_SRC: string = "music.mp3";
 
 export default function VoiceMessage() {
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [timeoutIds, setTimeoutIds] = useState<number[]>([]);
 
+  // Format seconds to standart timing (00:00)
+  function formatDuration(duration: number): string {
+    const minutes: number = Math.floor(duration / 60);
+    const seconds: number = Math.floor(duration % 60);
+    const formattedSeconds: string = seconds < 10 ? "0" + seconds : seconds.toString();
+    return `${minutes}:${formattedSeconds}`;
+  };
+  // Update duration of the audio into div element
+  function updateDuration() {
+    const audio = document.getElementById("audio-message") as HTMLAudioElement;
+    const durationDiv = document.getElementById("audio-duration") as HTMLElement;
+    // Take current time when audio playing and the whole duration
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+
+    if (currentTime == 0) {
+      durationDiv.innerHTML = formatDuration(duration);
+    } else {
+      const remainingTime = duration - currentTime;
+      durationDiv.innerHTML = formatDuration(remainingTime);
+    }
+  };
+
+  // Big function for play/Pause button
   function playPause() {
     // Declaration of DOM Elements
     const buttonStill = document.querySelector(".button-play") as HTMLElement;
     const buttonPulsingShape = document.querySelector(".play-wrapper__circle-pulse") as HTMLElement;
     const bars = document.querySelectorAll(".bar");
-    const audio = document.getElementById("voice-message-for-you") as HTMLAudioElement;
+    const audio = document.getElementById("audio-message") as HTMLAudioElement;
 
-    // Play/pause
+    // Play/pause toggle on click
     buttonStill.classList.toggle("paused");
     buttonPulsingShape.classList.toggle("pulsing");
 
@@ -49,7 +75,7 @@ export default function VoiceMessage() {
       });
     };
 
-    // Pause the animation
+    // Pause the animation for voice bars
     function pauseAnimation() {
       timeoutIds.forEach(timeoutId => {
         clearTimeout(timeoutId); // Cancel the associated timeout
@@ -57,7 +83,7 @@ export default function VoiceMessage() {
       setTimeoutIds([]); // Clear the timeout identifiers
     };
 
-    // Toggle play and pause animation for voice bars
+    // Toggle play and pause animation for voice bars and play audio
     if (!isPlaying) {
       animateBars();
       audio.play();
@@ -83,11 +109,11 @@ export default function VoiceMessage() {
       <div className="flex flex-col justify-between w-full">
         <VoiceBars />
         <div className="flex justify-between text-xs text-white">
-          <div>4:33</div>
-          <div>{getTime()}</div>
+          <span id="audio-duration"></span>
+          <span>{getTime()}</span>
         </div>
       </div>
-      <audio id="voice-message-for-you" src="/music1.mp3"></audio>
+      <audio id="audio-message" src={AUDIO_SRC} onTimeUpdate={updateDuration} onDurationChange={updateDuration}></audio>
     </div>
   )
 }
