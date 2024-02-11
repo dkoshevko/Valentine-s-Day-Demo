@@ -98,25 +98,32 @@ export default function VoiceMessage() {
 
 
   return (
-    <div
-      style={{ backgroundColor: "#EF4444" }}
-      className="my-56 w-72 relative flex gap-5 rounded-xl rounded-bl-none p-3"
-    >
-      <div id="dialog-corner"></div>
-      <div className="play-wrapper">
-        <div className="play-wrapper__circle">
-          <div className="play-wrapper__circle-pulse"></div>
-          <div className="button-play" onClick={playPause}></div>
+    <div className="w-full mb-10">
+      <h2 className="text-xl font-medium text-justify leading-none px-2 mb-5">
+        Tu as un message vocal qui répond à ta question tant posée :
+      </h2>
+      <div className="flex flex-col justify-center items-center">
+        <div
+          style={{ backgroundColor: "#EF4444" }}
+          className="w-72 relative flex gap-5 rounded-xl rounded-bl-none p-3"
+        >
+          <div id="dialog-corner"></div>
+          <div className="play-wrapper">
+            <div className="play-wrapper__circle">
+              <div className="play-wrapper__circle-pulse"></div>
+              <div className="button-play" onClick={playPause}></div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-between w-full">
+            <VoiceBars />
+            <div className="flex justify-between text-xs text-white">
+              <span id="audio-duration"></span>
+              <span>{getTime()}</span>
+            </div>
+          </div>
+          <audio id="audio-message" src={AUDIO_SRC} onTimeUpdate={updateDuration} onDurationChange={updateDuration}></audio>
         </div>
       </div>
-      <div className="flex flex-col justify-between w-full">
-        <VoiceBars />
-        <div className="flex justify-between text-xs text-white">
-          <span id="audio-duration"></span>
-          <span>{getTime()}</span>
-        </div>
-      </div>
-      <audio id="audio-message" src={AUDIO_SRC} onTimeUpdate={updateDuration} onDurationChange={updateDuration}></audio>
     </div>
   )
 }
