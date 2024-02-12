@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -27,7 +28,10 @@ export default function RootLayout({
         <Script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossOrigin="" />
         <Script src="https://kit.fontawesome.com/042d4f2146.js" crossOrigin="anonymous" />
       </head>
-      <body className={raleway.className}>{children}</body>
+      <body className={raleway.className}>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   )
 }

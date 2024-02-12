@@ -25,7 +25,7 @@ export default function Login() {
 
     if (responseValue === userResponse.toLowerCase()) {
       if (typeof window !== "undefined") {
-        localStorage.setItem("user", "verified");
+        sessionStorage.setItem("user", "verified");
         e.preventDefault();
         router.push("/home");
       }
