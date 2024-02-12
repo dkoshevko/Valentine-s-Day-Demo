@@ -66,7 +66,7 @@ export default function App() {
           <VoiceMessage />
           <Quote text="Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi." />
 
-          <div className="flex flex-col items-center font-medium text-center">
+          <div className="flex flex-col items-center font-medium text-center px-2">
             <h4>Je considère avoir remporté la vie parce que je t’ai à mes côtés</h4>
             <h4>Merci de me rendre heureux</h4>
             <h4>Je me sens submergé d’amour pour toi ∞</h4>
