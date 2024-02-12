@@ -41,7 +41,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const isAuth = window.localStorage.getItem("user");
+    const isAuth = window.sessionStorage.getItem("user");
     if (!isAuth) {
       redirect("/");
     };
