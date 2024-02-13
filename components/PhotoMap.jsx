@@ -13,7 +13,7 @@ export default function PhotoMap({ photos }) {
             <div className="w-full" style={{ height: "70vh" }}>
                 <MapContainer center={position} zoom={5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} >
                     <TileLayer
-                        detectRetina={true}
+
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
                     {Array.isArray(photos) && photos.map((photo, index) => (
