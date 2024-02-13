@@ -16,7 +16,7 @@ const getTime = () => {
   return actualTime;
 };
 
-const AUDIO_SRC: string = "music.mp3";
+const AUDIO_SRC: string = "pourquoi-je-taime.mp3";
 
 export default function VoiceMessage() {
 
@@ -27,13 +27,16 @@ export default function VoiceMessage() {
   function formatDuration(duration: number): string {
     const minutes: number = Math.floor(duration / 60);
     const seconds: number = Math.floor(duration % 60);
-    const formattedSeconds: string = seconds < 10 ? "0" + seconds : seconds.toString();
+    const formattedSeconds: string =
+      seconds < 10 ? "0" + seconds : seconds.toString();
     return `${minutes}:${formattedSeconds}`;
   };
   // Update duration of the audio into div element
   function updateDuration() {
     const audio = document.getElementById("audio-message") as HTMLAudioElement;
-    const durationDiv = document.getElementById("audio-duration") as HTMLElement;
+    const durationDiv = document.getElementById(
+      "audio-duration"
+    ) as HTMLElement;
     // Take current time when audio playing and the whole duration
     const currentTime = audio.currentTime;
     const duration = audio.duration;
@@ -80,7 +83,7 @@ export default function VoiceMessage() {
 
     // Pause the animation for voice bars
     function pauseAnimation() {
-      timeoutIds.forEach(timeoutId => {
+      timeoutIds.forEach((timeoutId) => {
         clearTimeout(timeoutId); // Cancel the associated timeout
       });
       setTimeoutIds([]); // Clear the timeout identifiers
@@ -99,9 +102,10 @@ export default function VoiceMessage() {
 
   return (
     <div className="w-full mb-10">
-      <h2 className="text-xl font-medium text-justify leading-none px-2 mb-5">
-        Tu as un message vocal qui répond à ta question tant posée :
-      </h2>
+      <div className="text-xl font-medium text-justify leading-none px-2 mb-5">
+        <h2>Tu as un message vocal qui répond à ta question tant posée :</h2>
+        <p className="text-xs font-light">Désolé pour la voix tremblante 🥺</p>
+      </div>
       <div className="flex flex-col justify-center items-center">
         <div
           style={{ backgroundColor: "#EF4444" }}
@@ -121,7 +125,12 @@ export default function VoiceMessage() {
               <span>{getTime()}</span>
             </div>
           </div>
-          <audio id="audio-message" src={AUDIO_SRC} onTimeUpdate={updateDuration} onDurationChange={updateDuration}></audio>
+          <audio
+            id="audio-message"
+            src={AUDIO_SRC}
+            onTimeUpdate={updateDuration}
+            onDurationChange={updateDuration}
+          ></audio>
         </div>
       </div>
     </div>
