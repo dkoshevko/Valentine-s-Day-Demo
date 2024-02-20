@@ -1,8 +1,13 @@
 # Project for Valentine's Day
 This demo contains royalty-free images and impersonalized text
 
+Designed for mobile usage 
 
-## Getting Started
+<b>[Visit Demo](https://valentines-day-demo.vercel.app/)
+
+--------------------------------------------
+
+### Getting Started
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
