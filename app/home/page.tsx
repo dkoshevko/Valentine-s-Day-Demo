@@ -1,45 +1,44 @@
 "use client"
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import dynamic from "next/dynamic";
-
+// Import components
 import Loader from "@/components/Loader";
 import Separator from "@/components/Separator";
-
 import Introduction from "@/components/Introduction";
-// import StaticMap from "@/components/StaticMap";
 import Icons from "@/components/Icons";
-// import PhotoMap from "@/components/PhotoMap";
 import PhotoSlider from "@/components/PhotoSlider";
 import DownloadButton from "@/components/DownloadButton";
 import Quote from "@/components/Quote";
 import VoiceMessage from "@/components/VoiceMessage";
 
-import photosArray from "../../data/photosArray";
-
 const StaticMap = dynamic( () => import("@/components/StaticMap"), { ssr: false } );
 const PhotoMap = dynamic( () => import("@/components/PhotoMap"), { ssr: false } );
 
+// Import Photo Array
+import photosArray from "../../data/photosArray";
+
 
 export default function App() {
-
+  // Define states
   const [showLoader, setShowLoader] = useState(true);
   const [showHome, setShowHome] = useState(false);
 
   useEffect(() => {
-    // Utiliser setTimeout pour masquer le Loader après 3 secondes
+    // Use setTimeout to hide the Loader after 2.5 seconds
     const loaderTimeoutId = setTimeout(() => {
       setShowLoader(false);
       setShowHome(true);
-    }, 2500); // 2500 millisecondes équivalent à 2,5 secondes
+    }, 2500); // 2500 milliseconds equals 2.5 seconds
 
-    // Nettoyer le timeout lorsque le composant est démonté
+    // Clear timeout when component is unmounted
     return () => {
       clearTimeout(loaderTimeoutId);
     };
   }, []);
 
+  // Check if the user answered correctly 
   useEffect(() => {
     const isAuth = window.sessionStorage.getItem("user");
     if (!isAuth) {
@@ -50,12 +49,9 @@ export default function App() {
   return (
     <main>
       {showLoader && <Loader />}{" "}
-      {/* Afficher le Loader si showLoader est vrai */}
+      {/* Show Loader if showLoader is true */}
       {showHome && (
-        <div
-          className="min-h-screen bg-cover bg-fixed bg-top text-slate-900 flex flex-col items-center relative"
-          style={{ backgroundImage: `url("/bg-hearts.avif")` }}
-        >
+        <div className="min-h-screen bg-cover bg-fixed bg-top text-slate-900 flex flex-col items-center relative">
           <Introduction />
           <StaticMap />
           <Icons />
@@ -64,14 +60,13 @@ export default function App() {
           <PhotoSlider photos={photosArray} />
           <DownloadButton />
           <VoiceMessage />
-          <Quote text="Une centaine de coeurs seraient trop peu nombreux pour transporter tout mon amour pour toi." />
+          <Quote text="A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved." />
 
           <div className="flex flex-col items-center font-medium text-center px-2">
-            <h4>Je considère avoir remporté la vie parce que je t’ai à mes côtés</h4>
-            <h4>Merci de me rendre heureux</h4>
-            <h4>Je me sens submergé d’amour pour toi ∞</h4>
+            <h4>Currently winning in life because I have you</h4>
+            <h4>Thank you for making me happy</h4>
             <Separator />
-            <span className="text-xs static bottom-0">Fait avec ❤️</span>
+            <span className="text-xs static bottom-0">Made with ❤️</span>
           </div>
 
         </div>

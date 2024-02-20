@@ -1,5 +1,5 @@
+// Bars for VoiceMessage component
 export default function VoiceBars() {
-
   return (
     <div className="h-full w-full flex gap-0.5 items-baseline pb-1 bars">
       <div className="h-1/6 w-1 bar"></div>
@@ -38,5 +38,5 @@ export default function VoiceBars() {
       <div className="h-2/3 w-1 bar"></div>
       <div className="h-1/3 w-1 bar"></div>
     </div>
-  )
+  );
 }

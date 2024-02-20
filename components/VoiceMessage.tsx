@@ -16,10 +16,11 @@ const getTime = () => {
   return actualTime;
 };
 
-const AUDIO_SRC: string = "pourquoi-je-taime.mp3";
+// Your audio
+const AUDIO_SRC: string = "music.mp3";
 
 export default function VoiceMessage() {
-
+  // Define states
   const [isPlaying, setIsPlaying] = useState(false);
   const [timeoutIds, setTimeoutIds] = useState<number[]>([]);
 
@@ -30,7 +31,7 @@ export default function VoiceMessage() {
     const formattedSeconds: string =
       seconds < 10 ? "0" + seconds : seconds.toString();
     return `${minutes}:${formattedSeconds}`;
-  };
+  }
   // Update duration of the audio into div element
   function updateDuration() {
     const audio = document.getElementById("audio-message") as HTMLAudioElement;
@@ -47,9 +48,9 @@ export default function VoiceMessage() {
       const remainingTime = duration - currentTime;
       durationDiv.innerHTML = formatDuration(remainingTime);
     }
-  };
+  }
 
-  // Big function for play/Pause button
+  // THE FUNCTION for Play/Pause button
   function playPause() {
     // Declaration of DOM Elements
     const buttonStill = document.querySelector(".button-play") as HTMLElement;
@@ -62,7 +63,7 @@ export default function VoiceMessage() {
     buttonPulsingShape.classList.toggle("pulsing");
 
     // Set the State for isPlaying
-    setIsPlaying(prevIsPlaying => !prevIsPlaying);
+    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
 
     // Calculate animation duration from audio length
     const barAnimationDuration = (audio.duration / 35) * 1000;
@@ -70,16 +71,19 @@ export default function VoiceMessage() {
     // Animation for voice bars
     function animateBars() {
       bars.forEach((bar, index) => {
-        if (bar.classList.contains("bar") && !bar.classList.contains("white-bars")) {
+        if (
+          bar.classList.contains("bar") &&
+          !bar.classList.contains("white-bars")
+        ) {
           // Storing the timeout identifier in the timeoutIds array
           const timeoutId = setTimeout(() => {
             bar.classList.add("white-bars");
             bar.classList.remove("bar");
           }, index * barAnimationDuration); // Duration of the animation (1000ms per bar)
-          setTimeoutIds(prevIds => [...prevIds, timeoutId as unknown as number]); // Perform an explicit type conversion
+          setTimeoutIds((prevIds) => [...prevIds, timeoutId as unknown as number,]); // Perform an explicit type conversion
         }
       });
-    };
+    }
 
     // Pause the animation for voice bars
     function pauseAnimation() {
@@ -87,7 +91,7 @@ export default function VoiceMessage() {
         clearTimeout(timeoutId); // Cancel the associated timeout
       });
       setTimeoutIds([]); // Clear the timeout identifiers
-    };
+    }
 
     // Toggle play and pause animation for voice bars and play audio
     if (!isPlaying) {
@@ -97,16 +101,15 @@ export default function VoiceMessage() {
       pauseAnimation();
       audio.pause();
     }
-  };
-
+  }
 
   return (
     <div className="w-full mb-10">
       <div className="text-xl font-medium text-justify leading-none px-2 mb-5">
-        <h2>Tu as un message vocal qui répond à ta question tant posée :</h2>
-        <p className="text-xs font-light">Désolé pour la voix tremblante 🥺</p>
+        <h2>You have a voice message:</h2>
       </div>
       <div className="flex flex-col justify-center items-center">
+        {/* Color #EF4444 matches the color of #dialog-corner */}
         <div
           style={{ backgroundColor: "#EF4444" }}
           className="w-72 relative flex gap-5 rounded-xl rounded-bl-none p-3"
@@ -134,5 +137,5 @@ export default function VoiceMessage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

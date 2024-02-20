@@ -50,15 +50,35 @@
     border-color: black;
   }
 }
+/* Separator effect */
+@keyframes separation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+/* Pulsing pause button effect */
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: url("../public/bg-hearts.avif");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .leaflet-popup-content {
@@ -81,7 +101,6 @@ body {
 
 .text-reveal {
   opacity: 0;
-  /* transform: translateY(100px); */
   transition: all 1.2s ease-out;
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -91,7 +110,6 @@ body {
 }
 .text-reveal-visible {
   opacity: 1;
-  /* transform: translateY(0); */
   animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
 }
 
@@ -101,14 +119,6 @@ body {
   transition: all 90ms linear;
 }
 
-@keyframes separation {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
 .separator {
   max-width: 93%;
   height: 1px;
@@ -157,21 +167,6 @@ body {
   animation-timing-function: ease;
   animation: pulse 1.5s infinite;
   background: rgba(255, 255, 255, 0.75);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1, 1);
-  }
-  25% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(1.2, 1.2);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
 }
 
 .button-play {

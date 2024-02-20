@@ -1,14 +1,18 @@
+// Script to extract metadata from photos in "public/photos"
+// Launch from terminal
+
+
 const fs = require("fs");
 const exif = require("exif").ExifImage;
 const moment = require("moment");
 
 console.log("Before importing photoArray");
-const photoArray = require("./photoArray");
+let photoArray = require("./photoArray");
 console.log("After importing photoArray");
 
 const photosDirectory = "../../public/photos";
 
-// Fonction pour extraire les métadonnées d'un fichier
+// Function to extract metadata from a file
 const extractMetadata = (filePath) => {
   return new Promise((resolve, reject) => {
     try {
@@ -27,7 +31,7 @@ const extractMetadata = (filePath) => {
   });
 };
 
-// Fonction pour lire les fichiers et extraire les métadonnées
+// Function to read files and extract metadata
 const processFiles = async () => {
   const newData = [];
 
@@ -45,12 +49,12 @@ const processFiles = async () => {
         // Extract relevant metadata
         const DateTime = exifData.exif || {};
         const gps = exifData.gps || {};
-        //   console.log('Full Exif data for', file, ':', exifData); // Ajout de cette ligne pour débogage
+        // console.log('Full Exif data for', file, ':', exifData); // Add this line for debugging
 
         if (DateTime && "DateTimeOriginal" in DateTime) {
           const { DateTimeOriginal } = DateTime;
 
-          // Convertir la date en utilisant moment.js
+          // Convert date using moment.js
           const formattedDate = moment(
             DateTimeOriginal,
             "YYYY:MM:DD HH:mm:ss"
@@ -66,7 +70,7 @@ const processFiles = async () => {
               GPSLongitude,
             } = gps;
 
-            // Vérifier si les valeurs de GPSLatitude et GPSLongitude sont définies
+            // Check if GPSLatitude and GPSLongitude values are set
             if (
               GPSLatitudeRef &&
               GPSLatitude.length === 3 &&
@@ -92,7 +96,7 @@ const processFiles = async () => {
                       GPSLongitude[2] / 3600
                     );
 
-              // Ajouter les nouvelles métadonnées aux nouvelles données
+              // Add the new metadata to the new data
               newData.push({
                 lat,
                 lng,
@@ -111,12 +115,12 @@ const processFiles = async () => {
       }
     }
 
-    console.log("New data:", newData); // Ajout de cette ligne pour débogage
+    console.log("New data:", newData); // Add this line for debugging
     console.log("Updated photoArray:", photoArray);
   } catch (err) {
     console.error("Error processing files:", err);
   }
 };
 
-// Appeler la fonction principale
+// Call main function
 processFiles();

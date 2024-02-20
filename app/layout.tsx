@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
-import "./globals.css";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from '@vercel/analytics/react';
-
-const raleway = Raleway({ subsets: ["latin"] });
+import { Analytics } from "@vercel/analytics/react";
+import "./globals.css";
+import { raleway } from "../env/fonts";
 
 export const metadata: Metadata = {
-  title: "Je t’aime ❤️",
-  description: "Créé avec amour",
+  title: "I ❤️ You",
+  description: "Made with love",
 };
+
 
 export default function RootLayout({
   children,
